@@ -1,0 +1,11 @@
+package KnowledgePoints.多线程.MySemaphore.src.com.itheima.mysemaphore;
+
+public class MySemaphoreDemo {
+    public static void main(String[] args) {
+        MyRunnable mr = new MyRunnable();
+
+        for (int i = 0; i < 100; i++) {
+            new Thread(mr).start();
+        }
+    }
+}

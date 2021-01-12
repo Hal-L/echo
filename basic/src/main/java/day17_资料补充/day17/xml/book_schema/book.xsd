@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+固定写法:表示当前的xml是一个约束文件,遵循标准的约束规范 xmlns:xs:就是给w3c的约束文件起了一个别名,叫xs,凡是它里面的元素都要加上xs
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+表示当前schma文件的名称空间,如果你想使用这个约束文件,就通过这个地址引过去
+    targetNamespace="http://www.itheima.cn"
+ 高品质的
+    elementFormDefault="qualified"
+-->
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.itheima.cn"
+        elementFormDefault="qualified">
+    <!--定义的是根元素,元素名称是书架-->
+    <xs:element name='书架'>
+        <!--复杂元素:有子元素的元素-->
+        <xs:complexType>
+            <!--sequence:子元素出现的顺序,最多出现2次-->
+            <xs:sequence maxOccurs='2'>
+                <xs:element name='书'>
+                    <xs:complexType>
+                        <!--子元素 书 也是顺序出现的,最少一次,最多无限-->
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <!--书名是字符串类型-->
+                            <xs:element name='书名' type='xs:string'/>
+                            <xs:element name='作者' type='xs:string'/>
+                            <!--售价是double类型-->
+                            <xs:element name='售价' type='xs:double'/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

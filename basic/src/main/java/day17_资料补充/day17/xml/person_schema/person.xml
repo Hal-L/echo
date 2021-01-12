@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--第一步:明确根标签来自哪个名称空间:直接使用xmlns指令来声明(直接把targetNamespace拿过来)
+    第二步:明确这是一个被约束的文件,这是一个固定写法
+    第三步:明确引入的名称空间和哪个约束文件对应
+-->
+<persons xmlns="http://www.itheima.cn/javase"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.itheima.cn/javase person.xsd">
+    <person id="a001">
+        <name>zs</name>
+        <age>23</age>
+    </person>
+</persons>
+
+

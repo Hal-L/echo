@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<school name="黑马程序员">
+    <course name="javaEE">
+        <class name="就业1班"></class>
+        <class name="就业2班"></class>
+        <class name="就业3班"></class>
+    </course>
+    <course name="前端">
+        <class name="就业1班"></class>
+        <class name="就业2班"></class>
+    </course>
+    <course name="大数据">
+        <class name="就业1班"></class>
+    </course>
+</school>

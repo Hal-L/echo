@@ -1,0 +1,25 @@
+# custom files
+Ballfight
+infoManager
+IOStream
+jdbc
+mybatis
+spring
+web
+
+javaEE
+.git
+PD
+*.exe
+*.zip
+*.rar
+*.7z
+AAAA
+game
+.idea
+target
+out
+*.avi
+*.mp4
+# temp files directories
+
