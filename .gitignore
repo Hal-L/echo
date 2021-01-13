@@ -9,7 +9,7 @@ web
 
 javaEE
 .git
-PD
+pd
 *.exe
 *.zip
 *.rar
