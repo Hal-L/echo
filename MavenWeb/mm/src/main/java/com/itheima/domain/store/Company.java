@@ -17,6 +17,10 @@ public class Company {
     private Integer state;
     private String city;
 
+    public Company() {
+        System.out.println("j-domain-store-!!!-Company--"+"+++实体类对象Company.");
+    }
+
     public String getId() {
         return id;
     }

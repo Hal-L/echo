@@ -15,12 +15,14 @@ import java.util.UUID;
 public class CompanyServiceImpl implements CompanyService {
     @Override
     public void save(Company company) {
+        System.out.println("j-service-store-impl-CompanyServiceImpl-!!!-save--"+company);
+
         SqlSession sqlSession = null;
-        try{
+        try {
             //1.获取SqlSession
             sqlSession = MapperFactory.getSqlSession();
             //2.获取Dao
-            CompanyDao companyDao = MapperFactory.getMapper(sqlSession,CompanyDao.class);
+            CompanyDao companyDao = MapperFactory.getMapper(sqlSession, CompanyDao.class);
             //id使用UUID的生成策略来获取
             String id = UUID.randomUUID().toString();
             company.setId(id);
@@ -28,14 +30,14 @@ public class CompanyServiceImpl implements CompanyService {
             companyDao.save(company);
             //4.提交事务
             TransactionUtil.commit(sqlSession);
-        }catch (Exception e){
+        } catch (Exception e) {
             TransactionUtil.rollback(sqlSession);
             throw new RuntimeException(e);
             //记录日志
-        }finally {
+        } finally {
             try {
                 TransactionUtil.close(sqlSession);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -43,24 +45,26 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public void delete(Company company) {
+        System.out.println("j-service-store-impl-CompanyServiceImpl-!!!-delete--"+company);
+
         SqlSession sqlSession = null;
-        try{
+        try {
             //1.获取SqlSession
             sqlSession = MapperFactory.getSqlSession();
             //2.获取Dao
-            CompanyDao companyDao = MapperFactory.getMapper(sqlSession,CompanyDao.class);
+            CompanyDao companyDao = MapperFactory.getMapper(sqlSession, CompanyDao.class);
             //3.调用Dao层操作
             companyDao.delete(company);
             //4.提交事务
             TransactionUtil.commit(sqlSession);
-        }catch (Exception e){
+        } catch (Exception e) {
             TransactionUtil.rollback(sqlSession);
             throw new RuntimeException(e);
             //记录日志
-        }finally {
+        } finally {
             try {
                 TransactionUtil.close(sqlSession);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -68,24 +72,26 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public void update(Company company) {
+        System.out.println("j-service-store-impl-CompanyServiceImpl-!!!-update--"+company);
+
         SqlSession sqlSession = null;
-        try{
+        try {
             //1.获取SqlSession
             sqlSession = MapperFactory.getSqlSession();
             //2.获取Dao
-            CompanyDao companyDao = MapperFactory.getMapper(sqlSession,CompanyDao.class);
+            CompanyDao companyDao = MapperFactory.getMapper(sqlSession, CompanyDao.class);
             //3.调用Dao层操作
             companyDao.update(company);
             //4.提交事务
             TransactionUtil.commit(sqlSession);
-        }catch (Exception e){
+        } catch (Exception e) {
             TransactionUtil.rollback(sqlSession);
             throw new RuntimeException(e);
             //记录日志
-        }finally {
+        } finally {
             try {
                 TransactionUtil.close(sqlSession);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -93,6 +99,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company findById(String id) {
+        System.out.println("j-service-store-impl-CompanyServiceImpl-!!!-findById--"+id);
         SqlSession sqlSession = null;
         try{
             //1.获取SqlSession
@@ -115,6 +122,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<Company> findAll() {
+        System.out.println("j-service-store-impl-CompanyServiceImpl-!!!-findAll--");
         SqlSession sqlSession = null;
         try{
             //1.获取SqlSession
@@ -137,6 +145,8 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public PageInfo findAll(int page, int size) {
+
+        System.out.println("j-service-store-impl-CompanyServiceImpl-!!!-findAll--`"+page+"<>"+size+"`.");
         SqlSession sqlSession = null;
         try{
             //1.获取SqlSession

@@ -14,6 +14,7 @@ public class TransactionUtil {
      * @param sqlSession
      */
     public static void commit(SqlSession sqlSession){
+        System.out.println("j-utils-TransactionUtil-!!!-commit");
         if(sqlSession!=null) {
             sqlSession.commit();
         }
@@ -24,6 +25,7 @@ public class TransactionUtil {
      * @param sqlSession
      */
     public static void rollback(SqlSession sqlSession){
+        System.out.println("j-utils-TransactionUtil-!!!-rollback");
         if(sqlSession!=null) {
             sqlSession.rollback();
         }
@@ -34,6 +36,7 @@ public class TransactionUtil {
      * @param sqlSession
      */
     public static void close(SqlSession sqlSession){
+        System.out.println("j-utils-TransactionUtil-!!!-close.");
         if(sqlSession!=null) sqlSession.close();
     }
 }

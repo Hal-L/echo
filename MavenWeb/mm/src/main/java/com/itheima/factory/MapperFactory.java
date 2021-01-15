@@ -18,6 +18,7 @@ public class MapperFactory {
     private static ThreadLocal<SqlSession> tl = new ThreadLocal<SqlSession>();
 
     static {
+        System.out.println("j-factory-MapperFactory-!!!-static静态代码快.");
         InputStream in = null;
         try {
             //1.读取mybatis主配置文件
@@ -29,6 +30,7 @@ public class MapperFactory {
         }catch (Exception e){
             //打印异常信息到控制台
             e.printStackTrace();
+            System.out.println("wjeriohjtgoir4e5hjoihuouih");
             //抛出错误提示程序终止执行
             throw new ExceptionInInitializerError("初始化SqlSessionFactory失败");
         }finally {
@@ -49,7 +51,8 @@ public class MapperFactory {
      * 保留此方法是为了后面对业务层方法增强，利用AOP添加事务
      */
     public static SqlSession getSqlSession(){
-         return factory.openSession(false);
+        System.out.println("j-factory-MapperFactory-!!!-getSqlSession.");
+        return factory.openSession(false);
     }
 
     /**
@@ -57,9 +60,11 @@ public class MapperFactory {
      * @param daoClass dao接口字节码
      * @return
      */
-    public static <T> T getMapper(SqlSession sqlSession,Class<T> daoClass){
+    public static <T> T getMapper(SqlSession sqlSession, Class<T> daoClass) {
+        System.out.println("j-factory-MapperFactory-!!!-getMapper--"+sqlSession+"+++"+daoClass+".");
+
         //1.判断传入的SqlSession是否为null
-        if(sqlSession == null){
+        if (sqlSession == null) {
             return null;
         }
         //2.不为null，创建代理实现类
