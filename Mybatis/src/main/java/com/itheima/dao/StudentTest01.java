@@ -16,13 +16,13 @@ public class StudentTest01 {
      */
     @Test
     public void delete() throws Exception{
-        //1.加载核心配置文件
+        //1.加载核心配置文件,返回一个字节输入流对象.
         InputStream is = Resources.getResourceAsStream("MyBatisConfig.xml");
 
         //2.获取SqlSession工厂对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
 
-        //3.通过工厂对象获取SqlSession对象
+        //3.通过工厂对象获取SqlSession对象(SqlSession对象:真正能执行功能的对象)
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
@@ -131,21 +131,25 @@ public class StudentTest01 {
     @Test
     public void selectAll() throws Exception{
         //1.加载核心配置文件
-        //InputStream is = Resources.getResourceAsStream("MyBatisConfig.xml");
-        InputStream is = StudentTest01.class.getClassLoader().getResourceAsStream("MyBatisConfig.xml");
+        //Resources工具类
+        InputStream is = Resources.getResourceAsStream("MyBatisConfig.xml");
+        //InputStream is = StudentTest01.class.getClassLoader().getResourceAsStream("MyBatisConfig.xml");
 
         //2.获取SqlSession工厂对象
+        //SqlSessionFactoryBuilder:获取SqlSessionFactory工厂对象的功能类,核心方法build(InputStream is),通过指定资源SqlSession工厂对象,返回值类型为SqlSessionFactory
+        //SqlSessionFactory:获取SqlSeion构建者对象的工厂接口,核心方法openSession(),获取SqlSesion构建者对象,并开启手动提交事务,返回值类型为SqlSession;核心方法openSesion(boolean autoCommit),获取SqlSession构建者对象,如果参数为true,则开启自动提交事务。
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
 
         //3.通过SqlSession工厂对象获取SqlSession对象
+        //SqlSession:构建者对象接口。用于执行SQL、管理事务、接口代理。
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        //4.执行映射配置文件中的sql语句，并接收结果
+        //4.执行映射配置文件中的sql语句，并接收结果(selectList查询所有,传入的参数为映射文件SudentMapper.xml文件里的名称空间点.上id)
         List<Student> list = sqlSession.selectList("StudentMapper.selectAll");
 
         //5.处理结果
         for (Student stu : list) {
-            System.out.println(stu);
+            System.out.println("stu = " + stu);
         }
 
         //6.释放资源
