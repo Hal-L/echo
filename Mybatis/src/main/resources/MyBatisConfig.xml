@@ -5,7 +5,7 @@
 <!--configuration 核心根标签-->
 <configuration>
 
-    <!--引入数据库连接的配置文件-->
+    <!--引入数据库连接的配置文件,resources填写路径-->
     <properties resource="jdbc.properties"/>
 
     <!--配置LOG4J-->
@@ -15,7 +15,9 @@
 
     <!--起别名-->
     <typeAliases>
+        <!-- type:全类名,alias:别名-->
         <typeAlias type="com.itheima.bean.Student" alias="student"/>
+
         <!--<package name="com.itheima.bean"/>-->
     </typeAliases>
 
